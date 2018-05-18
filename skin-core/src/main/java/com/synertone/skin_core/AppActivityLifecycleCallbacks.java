@@ -55,7 +55,6 @@ public class AppActivityLifecycleCallbacks implements Application.ActivityLifecy
 
     @Override
     public void onActivityResumed(Activity activity) {
-
     }
 
     @Override

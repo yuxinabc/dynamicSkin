@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         ViewPager viewPager = findViewById(R.id.viewPager);
-
         List<Fragment> list = new ArrayList<>();
         list.add(new MusicFragment());
         list.add(new VideoFragment());
@@ -49,7 +48,23 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(myFragmentPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
         //刷新设置TabLayout字体
-        SkinManager.getInstance().updateSkin(this);
+       SkinManager.getInstance().updateSkin(this);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                SkinManager.getInstance().updateSkin(MainActivity.this);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
     }
 
