@@ -6,6 +6,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.synertone.dynamicskin.MainActivity;
+import com.synertone.dynamicskin.widget.RuntimeRationale;
+import com.yanzhenjie.permission.Action;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.Permission;
+
+import java.util.List;
 
 /**
  * @author Lance

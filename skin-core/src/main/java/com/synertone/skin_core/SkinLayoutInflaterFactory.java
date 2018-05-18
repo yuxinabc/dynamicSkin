@@ -121,9 +121,10 @@ public class SkinLayoutInflaterFactory implements LayoutInflater.Factory2, Obser
 
     @Override
     public void update(Observable o, Object arg) {
-        //更换皮肤
+        //更换状态栏
         SkinThemeUtil.updateStatusBar(mActivity);
         Typeface typeface = SkinThemeUtil.getTypeface(mActivity);
+        //更换皮肤和字体
         skinAttribute.applySkin(typeface);
     }
 }

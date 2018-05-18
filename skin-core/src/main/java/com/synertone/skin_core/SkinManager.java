@@ -1,6 +1,8 @@
 package com.synertone.skin_core;
 
+import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
@@ -77,5 +79,9 @@ public class SkinManager extends Observable {
         }
         setChanged();
         notifyObservers();
+    }
+
+    public void updateSkin(Activity activity) {
+        appActivityLifecycleCallbacks.updateSkin(activity);
     }
 }

@@ -18,6 +18,4 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowBackground">@drawable/p_login_bg</item>
     </style>
-
-
 </resources>

@@ -6,6 +6,8 @@ import android.content.res.TypedArray;
 import android.support.design.widget.TabLayout;
 import android.util.AttributeSet;
 import com.synertone.dynamicskin.R;
+import com.synertone.skin_core.SkinViewSupport;
+import com.synertone.skin_core.util.SkinResources;
 
 
 /**
@@ -13,7 +15,7 @@ import com.synertone.dynamicskin.R;
  * @date 2018/3/12
  */
 
-public class MyTabLayout extends TabLayout  {
+public class MyTabLayout extends TabLayout  implements SkinViewSupport{
     int tabIndicatorColorResId;
     int tabTextColorResId;
 
@@ -34,17 +36,17 @@ public class MyTabLayout extends TabLayout  {
         a.recycle();
     }
 
-//    @Override
-//    public void applySkin() {
-//        if (tabIndicatorColorResId != 0) {
-//            int tabIndicatorColor = SkinResources.getInstance().getColor(tabIndicatorColorResId);
-//            setSelectedTabIndicatorColor(tabIndicatorColor);
-//        }
-//
-//        if (tabTextColorResId != 0) {
-//            ColorStateList tabTextColor = SkinResources.getInstance().getColorStateList
-//                    (tabTextColorResId);
-//            setTabTextColors(tabTextColor);
-//        }
-//    }
+    @Override
+    public void applySkin() {
+        if (tabIndicatorColorResId != 0) {
+            int tabIndicatorColor = SkinResources.getInstance().getColor(tabIndicatorColorResId);
+            setSelectedTabIndicatorColor(tabIndicatorColor);
+        }
+
+        if (tabTextColorResId != 0) {
+            ColorStateList tabTextColor = SkinResources.getInstance().getColorStateList
+                    (tabTextColorResId);
+            setTabTextColors(tabTextColor);
+        }
+    }
 }

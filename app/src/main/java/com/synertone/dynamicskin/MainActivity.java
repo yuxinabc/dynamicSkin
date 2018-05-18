@@ -9,6 +9,11 @@ import android.view.View;
 import com.synertone.dynamicskin.fragment.MusicFragment;
 import com.synertone.dynamicskin.fragment.RadioFragment;
 import com.synertone.dynamicskin.fragment.VideoFragment;
+import com.synertone.dynamicskin.widget.RuntimeRationale;
+import com.synertone.skin_core.SkinManager;
+import com.yanzhenjie.permission.Action;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.Permission;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TabLayout tabLayout = findViewById(R.id.tabLayout);
@@ -44,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
                 (getSupportFragmentManager(), list, listTitle);
         viewPager.setAdapter(myFragmentPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+        //刷新设置TabLayout字体
+        SkinManager.getInstance().updateSkin(this);
+
     }
 
     /**
@@ -52,6 +59,17 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void skinSelect(View view) {
-        startActivity(new Intent(this, SkinActivity.class));
+        AndPermission.with(this)
+                .runtime()
+                .permission(Permission.WRITE_EXTERNAL_STORAGE)
+                .rationale(new RuntimeRationale())
+                .onGranted(new Action<List<String>>() {
+                    @Override
+                    public void onAction(List<String> data) {
+                        startActivity(new Intent(MainActivity.this, SkinActivity.class));
+                    }
+                })
+                .start();
+
     }
 }

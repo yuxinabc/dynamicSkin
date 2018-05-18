@@ -78,4 +78,9 @@ public class AppActivityLifecycleCallbacks implements Application.ActivityLifecy
         SkinLayoutInflaterFactory observer = mLayoutInflaterFactories.remove(activity);
         SkinManager.getInstance().deleteObserver(observer);
     }
+
+    public void updateSkin(Activity activity) {
+        SkinLayoutInflaterFactory skinLayoutInflaterFactory = mLayoutInflaterFactories.get(activity);
+        skinLayoutInflaterFactory.update(null,null);
+    }
 }
